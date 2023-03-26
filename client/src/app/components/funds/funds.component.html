@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="createNewAccount()">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input type="text" formControlName="name">
+            </td>
+            <td *ngIf="form.get('name')?.hasError('required')">
+                Please enter a name
+           </td>
+            <td *ngIf="form.get('name')?.hasError('min')">
+                Please enter a name that has at least 5 characters
+           </td>
+        </tr>
+        <tr>
+            <td>Balance:</td>
+            <td>
+                <input type="number" formControlName="balance">
+            </td>
+            <td *ngIf="form.get('balance')?.hasError('required')">
+                Please enter an amount to deposit
+           </td>
+            <td *ngIf="form.get('balance')?.hasError('min')">
+                Please enter at least $10
+           </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Add Account</button>
+            </td>
+        </tr>
+    </table>
+</form>

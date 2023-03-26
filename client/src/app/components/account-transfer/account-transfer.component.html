@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="placeTransfer()">
+    <table>
+        <tr>
+            <td>From Account: </td>
+            <td>
+                <select formControlName="fromAccount">
+                    <option *ngFor="let a of account" value="{{ a.id }}">
+                        {{ a.name }} ( {{ a.id }} )
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>To Account: </td>
+            <td>
+                <select formControlName="toAccount">
+                    <option *ngFor="let a of account" value="{{ a.id }}">
+                        {{ a.name }} ( {{ a.id }})
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Transfer Amount: </td>
+            <td>
+                <input type="number" formControlName="transferAmount">
+            </td>
+        </tr>
+        <tr>
+            <td>Comments: </td>
+            <td>
+                <input type="text" formControlName="comments">
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Transfer</button>
+</form>
