@@ -13,19 +13,19 @@ import static nus.iss.edu.server.Constants.*;
 @Repository
 public class AccTransRedisImpl {
 
-    // @Autowired
-    // @Qualifier(DATABASE_REDIS)
-    // RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    @Qualifier(DATABASE_REDIS)
+    RedisTemplate<String, String> redisTemplate;
 
-    // public int saveTransferAccount(AccountTransfer at){
+    public int saveTransferAccount(AccountTransfer at){
 
-    //     redisTemplate.opsForValue().set(at.getId(), Utils.toJSON(at));
-    //     String result = (String) redisTemplate.opsForValue().get(at.getId());
-    //     if(result != null){
-    //         return 1;
-    //     } else {
-    //         return 0;
-    //     }
-    // }
+        redisTemplate.opsForValue().set(at.getId(), Utils.toJSON(at).toString());
+        String result = (String) redisTemplate.opsForValue().get(at.getId());
+        if(result != null){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
     
 }

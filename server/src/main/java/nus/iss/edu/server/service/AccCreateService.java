@@ -20,8 +20,8 @@ public class AccCreateService {
     @Autowired
     private AccCreateRepoImpl repository;
 
-    // @Autowired
-    // private AccTransRedisImpl redisRepo;
+    @Autowired
+    private AccTransRedisImpl redisRepo;
 
     public String insertAccount(String s){
 
@@ -50,8 +50,8 @@ public class AccCreateService {
         JsonObject j = Utils.tocreateJson(s);
         AccountTransfer at = Utils.createTransferAcc(j, id);
         repository.insertTransferAccount(at);
-        // Integer result = redisRepo.saveTransferAccount(at);
-        // System.out.println(result);
+        Integer result = redisRepo.saveTransferAccount(at);
+        System.out.println(result);
         return id;
     }
     
